@@ -1,0 +1,44 @@
+<main class="welcome-view">
+    <section>
+        <img class="welcome-image" src="https://s3-alpha-sig.figma.com/img/35a6/ae21/9ccfdee80e9faa18427e56cc62a50416?Expires=1697414400&Signature=gAmIxTpG8rAyFt8CGe~o0hOQES3Iun4z6doQgo6XFMrP2GXQ9QuhvhORZ62jxwzDdiLSTY61Z1ZkH1ugDUz2Wv2DeX0AGOly6XNQm8R5aim7mSgscxUYsOh-1SayxBBNgHteiLMJF8zlnHrvnMLqwl3hYxTQ72shYmHTYtVUmS3cpUkU-1E0ZHb4eGIjftzGzuMd8t1LnOAHvk67aG9jS9h~XRO84Pvvyu9xbYZZdqbrSBXY36QnOoXInjPs-94f3SxTCDsltLH~YFMU1ImiXbyzKzxU4fDDfacDM~Xu3FAyJeb7WxUYdCDJyYtaef7w0np9WEtMmx5X-ZHdMQDB2Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="">
+    </section>
+
+    <section>
+        <p class="welcome-main-title" >
+            Bienvenido a <span class="welcome-main-title-highlight">"FoodMaker"</span>
+        </p>
+        <h1 class="welcome-username"> {{ user.name }} </h1>
+    </section>
+
+    <section>
+        <form class="welcome-form-main-container" action="">
+            <p class="welcome-form-text">¿De cuanto tiempo dispones para cocinar?</p>
+
+            <div class="welcome-form-subcontainer">
+                <input class="welcome-form-input" 
+                    type="number" 
+                    minlength="2" 
+                    maxlength="2"
+                    value="00"
+                    required
+                >
+                
+                <span class="welcome-form-input-separator">
+                    :
+                </span>
+                
+                <input class="welcome-form-input" 
+                    type="number" 
+                    minlength="2" 
+                    maxlength="2"
+                    value="00"
+                    required
+                >
+            </div>
+
+            <button class="welcome-form-button">
+                Confirmar
+            </button>
+        </form>
+    </section>
+</main>

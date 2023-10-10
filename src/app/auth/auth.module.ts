@@ -11,12 +11,6 @@ import { LoginModule } from './login/login.module';
     FormsModule,
     LoginModule,
     RegisterModule
-  ],
-  exports: [
-    CommonModule,
-    FormsModule,
-    LoginModule,
-    RegisterModule
   ]
 })
 export class AuthModule { }
