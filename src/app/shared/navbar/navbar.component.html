@@ -1,1 +1,15 @@
-<p>navbar works!</p>
+<nav class="navbar-background">
+    <ul class="navbar-routes">
+        <ng-container *ngFor="let navbarRoute of navbarRoutes">
+            <li class="navbar-route" 
+                [class]="navbarRoute?.class"
+            >
+                <a [href]="navbarRoute.href">
+                    <img [alt]="navbarRoute.name"
+                        [src]="navbarRoute.isActive ? navbarRoute.iconActive : navbarRoute.icon"    
+                    >
+                </a>
+            </li>
+        </ng-container>
+    </ul>
+</nav>

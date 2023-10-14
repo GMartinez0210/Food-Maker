@@ -11,6 +11,10 @@ import { RecipeCardModule } from './recipe-card/recipe-card.module';
     CommonModule,
     NavbarModule,
     RecipeCardModule
+  ],
+  exports: [ 
+    NavbarModule,
+    RecipeCardModule
   ]
 })
 export class SharedModule { }

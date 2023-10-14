@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthRoutingModule } from './auth/auth-routing.module';
-import { ViewRoutingModule } from './view/view-routing.module';
+
+import { AuthModule } from './auth/auth.module';
+import { ViewModule } from './view/view.module';
 
 const routes: Routes = [];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    AuthRoutingModule,
-    ViewRoutingModule,
+    AuthModule,
+    ViewModule,
   ],
   exports: [
-    RouterModule, 
-    AuthRoutingModule,
-    ViewRoutingModule
+    RouterModule,
+    AuthModule,
+    ViewModule,
   ]
 })
 export class AppRoutingModule { }

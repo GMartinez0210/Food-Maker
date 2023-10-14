@@ -7,4 +7,5 @@
 
 html, body {
     height: clamp(100vh, 100%, 100%);
+    background: #000;
 }
