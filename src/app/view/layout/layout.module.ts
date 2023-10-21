@@ -5,6 +5,9 @@ import { HomeModule } from './home/home.module';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CategoryComponent } from './category/category.component';
+import { CategoryModule } from './category/category.module';
+import { AccountComponent } from './account/account.component';
 
 const routes: Routes = [
   {
@@ -17,7 +20,7 @@ const routes: Routes = [
       },
       {
         path: "category",
-        component: HomeComponent
+        component: CategoryComponent
       },
       {
         path: "favorite",
@@ -25,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: "account",
-        component: HomeComponent
+        component: AccountComponent
       },
       {
         path: "**",
@@ -41,6 +44,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     HomeModule,
+    CategoryModule,
     SharedModule
   ]
 })

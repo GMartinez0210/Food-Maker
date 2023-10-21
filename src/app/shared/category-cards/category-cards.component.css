@@ -1,0 +1,4 @@
+.category-cards-section-container {
+    display: flex;
+    gap: 1rem;
+}

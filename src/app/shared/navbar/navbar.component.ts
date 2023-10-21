@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
         name: "Category"
       },
       {
-        href: "#",
+        href: "/add-recipe",
         icon: "/assets/navbar/navbar-plus-icon.svg",
         iconActive: "/assets/navbar/navbar-plus-icon-active.svg",
         isActive: false,
