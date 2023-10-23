@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { IUser, IUserLogin } from 'src/app/interface/user.interface';
@@ -8,7 +8,7 @@ import { IUser, IUserLogin } from 'src/app/interface/user.interface';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loginForm: FormGroup = new FormGroup({
     username: new FormControl("", [Validators.email, Validators.required]),
@@ -20,10 +20,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly authService: AuthService
   ) {}
-
-  ngOnInit(): void {
-    
-  }
 
   takeUser() {
     this.authService.$user.subscribe(

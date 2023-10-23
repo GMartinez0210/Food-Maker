@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser, IUserLogin } from '../interface/user.interface';
+import { IUser, IUserLogin, IUserRegister } from '../interface/user.interface';
 import { BehaviorSubject } from 'rxjs';
 import { HttpService } from '../service/http.service';
 
@@ -17,15 +17,36 @@ export class AuthService {
 
   login(body: IUserLogin) {
     const loginSubscription = this.httpService
-      .post<IUser, IUserLogin>(
+      .post<IUser, object>(
         "/login",
-        body
+        {
+          nombre: body.username,
+          contrasenia: body.username,
+        }
       )
 
     loginSubscription.subscribe(this.handleLogin)
   }
 
   handleLogin(response: IUser) {
+    this.userBehaviorSubject.next(response)
+  }
+
+  register(body: IUserRegister) {
+    const registerSubscription = this.httpService
+      .post<IUser, object>(
+        "/registrar",
+        {
+          correo: body.email,
+          nombre: body.name,
+          contrasenia: body.password,
+        }
+      )
+
+    registerSubscription.subscribe(this.handleRegister)
+  }
+
+  handleRegister(response: IUser) {
     this.userBehaviorSubject.next(response)
   }
 }
