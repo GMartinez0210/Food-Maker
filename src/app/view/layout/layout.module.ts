@@ -8,6 +8,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CategoryComponent } from './category/category.component';
 import { CategoryModule } from './category/category.module';
 import { AccountComponent } from './account/account.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { AccountModule } from './account/account.module';
+import { AddRecipeModule } from './add-recipe/add-recipe.module';
 
 const routes: Routes = [
   {
@@ -45,6 +48,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     HomeModule,
     CategoryModule,
+    AccountModule,
+    AddRecipeModule,
     SharedModule
   ]
 })

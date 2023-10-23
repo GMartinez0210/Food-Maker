@@ -4,17 +4,26 @@
     </section>
 
     <section>
-        <form class="login-form-main-container" action="">
+        <form class="login-form-main-container" 
+            [formGroup]="loginForm"
+            (ngSubmit)="handleLoginSubmit()"
+        >
             <div class="login-form-container">
                 <label class="login-form-text" for="">Usuario: </label>
-                <input class="login-form-input" type="text">
+                <input class="login-form-input" 
+                    formControlName="username"
+                    type="text"
+                >
             </div>
             <div class="login-form-container">
                 <label class="login-form-text" for="">Contraseña: </label>
-                <input class="login-form-input" type="password">
+                <input class="login-form-input" 
+                    formControlName="password"
+                    type="password"
+                >
                 <p class="login-form-subtext">Registrate pulsando <a class="login-form-subtext href" href="/register">aquí</a> </p>
             </div>
-            <button class="login-form-button">
+            <button class="login-form-button" type="submit">
                 Ingresar
             </button>
         </form>
