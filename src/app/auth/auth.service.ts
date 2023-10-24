@@ -21,7 +21,7 @@ export class AuthService {
         "/login",
         {
           nombre: body.username,
-          contrasenia: body.username,
+          contrasenia: body.password,
         }
       )
 
