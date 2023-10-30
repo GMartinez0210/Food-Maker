@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -9,12 +10,16 @@ import { UserService } from 'src/app/service/user.service';
 export class WelcomeComponent {
 
   user: any = {
-    name: "Adhemar"
+    nombre: "Adhemars"
   }
-
+  nombre:''
   constructor(
-    private readonly userService: UserService
-  ) {}
+    private readonly userService: UserService, private route:ActivatedRoute
+  ) {
+    this.route.params.subscribe((params)=>{
+      this.nombre=params['nombre'];
+    });
+  }
 
   takeUser() {
     this.userService.user$.subscribe(

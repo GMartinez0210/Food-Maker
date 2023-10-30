@@ -3,8 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthModule } from './auth/auth.module';
 import { ViewModule } from './view/view.module';
+import { WelcomeComponent } from './view/welcome/welcome.component';
 
-const routes: Routes = [];
+
+const routes: Routes = [
+  
+];
 
 @NgModule({
   imports: [

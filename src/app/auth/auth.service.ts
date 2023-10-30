@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IUser, IUserLogin, IUserRegister } from '../interface/user.interface';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { HttpService } from '../service/http.service';
 
 @Injectable({
@@ -11,42 +11,38 @@ export class AuthService {
   private userBehaviorSubject: BehaviorSubject<IUser> = new BehaviorSubject(null)
   $user = this.userBehaviorSubject.asObservable()
 
+  private loginStatusSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public loginStatus$: Observable<boolean> = this.loginStatusSubject.asObservable();
+
+
   constructor(
     private readonly httpService: HttpService,
   ) { }
 
-  login(body: IUserLogin) {
-    const loginSubscription = this.httpService
+  login(body: IUserLogin):Observable<any> {
+    return this.httpService
       .post<IUser, object>(
         "/login",
         {
-          nombre: body.username,
+          correo: body.email,
           contrasenia: body.password,
         }
-      )
+      );
 
-    loginSubscription.subscribe(this.handleLogin)
+    
   }
 
   handleLogin(response: IUser) {
-    this.userBehaviorSubject.next(response)
+  
+      this.userBehaviorSubject.next(response);
+     
   }
 
-  register(body: IUserRegister) {
-    const registerSubscription = this.httpService
-      .post<IUser, object>(
-        "/registrar",
-        {
-          correo: body.email,
-          nombre: body.name,
-          contrasenia: body.password,
-        }
-      )
-
-    registerSubscription.subscribe(this.handleRegister)
-  }
-
-  handleRegister(response: IUser) {
-    this.userBehaviorSubject.next(response)
+  register(body: IUserRegister): Observable<IUser> {
+    return this.httpService.post<IUser, object>("/registrar", {
+      correo: body.email,
+      nombre: body.name,
+      contrasenia: body.password,
+    });
   }
 }
