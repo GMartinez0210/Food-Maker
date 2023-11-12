@@ -26,6 +26,10 @@ const routes: Routes = [
         component: CategoryComponent
       },
       {
+        path: "add-recipe",
+        component: HomeComponent
+      },
+      {
         path: "favorite",
         component: HomeComponent
       },

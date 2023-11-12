@@ -34,4 +34,8 @@
     .navbar-plus-icon {
         translate: -2px -35px;
     }
+
+    .navbar-plus-icon-hidden {
+        visibility: hidden;
+    }
 }

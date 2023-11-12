@@ -20,8 +20,8 @@ export class AuthService {
       .post<IUser, object>(
         "/login",
         {
-          nombre: body.username,
-          contrasenia: body.username,
+          correo: body.username,
+          contrasenia: body.password,
         }
       )
 
