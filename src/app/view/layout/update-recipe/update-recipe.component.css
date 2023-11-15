@@ -1,8 +1,8 @@
-.add-recipe-main-container {
+.update-recipe-main-container {
     padding: 1rem;
 }
 
-.add-recipe-title {
+.update-recipe-title {
     color: #FFF;
     font-family: Inter;
     font-size: 20px;
@@ -13,7 +13,7 @@
     margin-block: 1.5rem 1rem;
 }
 
-.add-recipe-header-container {
+.update-recipe-header-container {
     width: 100%;
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@
     margin-bottom: 1rem;
 }
 
-.add-recipe-header-form {
+.update-recipe-header-form {
     width: 100%;
 
     display: flex;
@@ -30,19 +30,19 @@
     gap: 0.5rem;
 }
 
-.add-recipe-footer-container {
+.update-recipe-footer-container {
     display: flex;
     justify-content: space-around;
 }
 
-.add-recipe-footer-subcontainer {
+.update-recipe-footer-subcontainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
 }
 
-.add-recipe-footer-title {
+.update-recipe-footer-title {
     color: #FFF;
     font-family: Inter;
     font-size: 10px;
@@ -51,7 +51,7 @@
     line-height: normal;
 }
 
-.add-recipe-body-contianer {
+.update-recipe-body-contianer {
     width: 100%;
     display: flex;
     gap: 1rem;
@@ -59,11 +59,11 @@
     margin-bottom: 1rem;
 }
 
-.add-recipe-body-subcontianer {
+.update-recipe-body-subcontianer {
     width: 100%;
 }
 
-.add-recipe-body-title { 
+.update-recipe-body-title { 
     color: #FFF;
     font-family: Inter;
     font-size: 12px;
@@ -74,11 +74,11 @@
     margin-bottom: 1rem;
 }
 
-.add-recipe-body-button-container {
+.update-recipe-body-button-container {
     margin-bottom: 0.5rem;
 }
 
-.add-recipe-body-button { 
+.update-recipe-body-button { 
     margin-left: auto;
 
     display: flex;
@@ -93,7 +93,7 @@
     justify-content: flex-end;
 }
 
-.add-recipe-input-title {
+.update-recipe-input-title {
     border-radius: 3px;
     border: 1px solid #78A518;
     background: #111;
@@ -108,7 +108,7 @@
     line-height: normal;
 }
 
-.add-recipe-input-title::placeholder {
+.update-recipe-input-title::placeholder {
     color: #FFF;
     font-family: Inter;
     font-size: 12px;
@@ -117,7 +117,7 @@
     line-height: normal;
 }
 
-.add-recipe-input-description {
+.update-recipe-input-description {
     border-radius: 3px;
     border: 1px solid #78A518;
     background: #111;
@@ -131,7 +131,7 @@
     line-height: normal;
 }
 
-.add-recipe-input-description::placeholder {
+.update-recipe-input-description::placeholder {
     color: #FFF;
     font-family: Inter;
     font-size: 12px;
@@ -140,7 +140,7 @@
     line-height: normal;
 }
 
-.add-recipe-instructions-description {
+.update-recipe-instructions-description {
     border-radius: 3px;
     border: 1px solid #78A518;
     background: #111;
@@ -148,7 +148,7 @@
     min-height: 252.784px;
 }
 
-.add-recipe-ingredients-description {
+.update-recipe-ingredients-description {
     border-radius: 3px;
     border: 1px solid #78A518;
     background: #111;
@@ -156,13 +156,13 @@
     min-height: 231px;
 }
 
-.add-recipe-form-subcontainer {
+.update-recipe-form-subcontainer {
     display: flex;
     gap: 0.25rem;
     align-items: center;
 }
 
-.add-recipe-form-input {
+.update-recipe-form-input {
     width: 18px;
     aspect-ratio: 1;    
     
@@ -182,7 +182,7 @@
     text-align: center;
 }
 
-.add-recipe-form-input-separator {
+.update-recipe-form-input-separator {
     color: #FFF;
     text-align: center;
     font-family: Inter;
@@ -192,7 +192,14 @@
     line-height: normal;
 }
 
-.add-recipe-button {
+.update-recipe-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.update-recipe-button {
     color: #78A518;
     text-align: center;
     font-family: Inter;

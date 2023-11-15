@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { NavbarModule } from './navbar/navbar.module';
 import { RecipeCardModule } from './recipe-card/recipe-card.module';
 import { RecipeCardsModule } from './recipe-cards/recipe-cards.module';
-import { CategoryCardsComponent } from './category-cards/category-cards.component';
-import { CategoryCardComponent } from './category-card/category-card.component';
 import { CategoryCardModule } from './category-card/category-card.module';
 import { CategoryCardsModule } from './category-cards/category-cards.module';
+import { CollectionCardModule } from './collection-card/collection-card.module';
+import { CollectionCardsModule } from './collection-cards/collection-cards.module';
 
 @NgModule({
   declarations: [],
@@ -17,6 +17,8 @@ import { CategoryCardsModule } from './category-cards/category-cards.module';
     RecipeCardsModule,
     CategoryCardModule,
     CategoryCardsModule,
+    CollectionCardModule,
+    CollectionCardsModule
   ],
   exports: [ 
     NavbarModule,
@@ -24,6 +26,8 @@ import { CategoryCardsModule } from './category-cards/category-cards.module';
     RecipeCardsModule,
     CategoryCardModule,
     CategoryCardsModule,
+    CollectionCardModule,
+    CollectionCardsModule,
   ]
 })
 export class SharedModule { }

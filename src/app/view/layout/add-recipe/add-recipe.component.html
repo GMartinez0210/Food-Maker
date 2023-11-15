@@ -1,1 +1,76 @@
-<p>add-recipe works!</p>
+<main class="add-recipe-main-container">
+    <h1 class="add-recipe-title">Añadir Receta</h1>
+    <section class="add-recipe-header-container">
+        <img src="/assets/add-recipe/add-recipe-avatar.svg" alt="">
+        <div class="add-recipe-header-form">
+            <input type="text"
+                class="add-recipe-input-title"
+                placeholder="Titulo de la receta"
+            >
+            <textarea name="" 
+                id="" 
+                cols="10" 
+                rows="5"
+                class="add-recipe-input-description" 
+                placeholder="Description"
+            ></textarea>
+        </div>
+    </section>
+    <section class="add-recipe-body-contianer">
+        <div class="add-recipe-body-subcontianer">
+            <h2 class="add-recipe-body-title">Instrucciones:</h2>
+            <div class="add-recipe-instructions-description"></div>
+        </div>
+        <div class="add-recipe-body-subcontianer">
+            <h2 class="add-recipe-body-title">Ingredientes:</h2>
+            <div class="add-recipe-body-button-container">
+                <button class="add-recipe-body-button">
+                    Añadir ingrediente
+                    <img src="/assets/add-recipe/add-recipe-plus.svg" alt="+">
+                </button>
+            </div>
+            <div class="add-recipe-ingredients-description"></div>
+        </div>
+    </section>
+    <section class="add-recipe-footer-container">
+        <div class="v">
+            <h2 class="add-recipe-footer-title">Tiempo de preparación</h2>
+            <div class="add-recipe-form-subcontainer">
+                <input class="add-recipe-form-input" 
+                    type="number" 
+                    minlength="2" 
+                    maxlength="2"
+                    value="00"
+                    required
+                >
+                
+                <span class="add-recipe-form-input-separator">
+                    :
+                </span>
+                
+                <input class="add-recipe-form-input" 
+                    type="number" 
+                    minlength="2" 
+                    maxlength="2"
+                    value="00"
+                    required
+                >
+                
+                <span class="add-recipe-form-input-separator">
+                    :
+                </span>
+
+                <input class="add-recipe-form-input" 
+                    type="number" 
+                    minlength="2" 
+                    maxlength="2"
+                    value="00"
+                    required
+                >
+            </div>
+        </div>
+        <div>
+            <button class="add-recipe-button">Añadir Receta</button>
+        </div>
+    </section>
+</main>
