@@ -11,6 +11,10 @@ import { AccountComponent } from './account/account.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { AccountModule } from './account/account.module';
 import { AddRecipeModule } from './add-recipe/add-recipe.module';
+import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
+import { UpdateRecipeModule } from './update-recipe/update-recipe.module';
+import { FavoriteModule } from './favorite/favorite.module';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 const routes: Routes = [
   {
@@ -26,16 +30,20 @@ const routes: Routes = [
         component: CategoryComponent
       },
       {
+        path: "add-recipe",
+        component: AddRecipeComponent
+      },
+      {
+        path: "update-recipe",
+        component: UpdateRecipeComponent
+      },
+      {
         path: "favorite",
-        component: HomeComponent
+        component: FavoriteComponent
       },
       {
         path: "account",
         component: AccountComponent
-      },
-      {
-        path: "**",
-        redirectTo: "/home"
       }
     ]
   }
@@ -50,6 +58,8 @@ const routes: Routes = [
     CategoryModule,
     AccountModule,
     AddRecipeModule,
+    UpdateRecipeModule,
+    FavoriteModule,
     SharedModule
   ]
 })

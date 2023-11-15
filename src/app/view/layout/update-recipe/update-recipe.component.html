@@ -1,0 +1,77 @@
+<main class="update-recipe-main-container">
+    <h1 class="update-recipe-title">Añadir Receta</h1>
+    <section class="update-recipe-header-container">
+        <img src="/assets/update-recipe/update-recipe-avatar.svg" alt="">
+        <div class="update-recipe-header-form">
+            <input type="text"
+                class="update-recipe-input-title"
+                placeholder="Titulo de la receta"
+            >
+            <textarea name="" 
+                id="" 
+                cols="10" 
+                rows="5"
+                class="update-recipe-input-description" 
+                placeholder="Description"
+            ></textarea>
+        </div>
+    </section>
+    <section class="update-recipe-body-contianer">
+        <div class="update-recipe-body-subcontianer">
+            <h2 class="update-recipe-body-title">Instrucciones:</h2>
+            <div class="update-recipe-instructions-description"></div>
+        </div>
+        <div class="update-recipe-body-subcontianer">
+            <h2 class="update-recipe-body-title">Ingredientes:</h2>
+            <div class="update-recipe-body-button-container">
+                <button class="update-recipe-body-button">
+                    Añadir ingrediente
+                    <img src="/assets/update-recipe/update-recipe-plus.svg" alt="+">
+                </button>
+            </div>
+            <div class="update-recipe-ingredients-description"></div>
+        </div>
+    </section>
+    <section class="update-recipe-footer-container">
+        <div class="v">
+            <h2 class="update-recipe-footer-title">Tiempo de preparación</h2>
+            <div class="update-recipe-form-subcontainer">
+                <input class="update-recipe-form-input" 
+                    type="number" 
+                    minlength="2" 
+                    maxlength="2"
+                    value="00"
+                    required
+                >
+                
+                <span class="update-recipe-form-input-separator">
+                    :
+                </span>
+                
+                <input class="update-recipe-form-input" 
+                    type="number" 
+                    minlength="2" 
+                    maxlength="2"
+                    value="00"
+                    required
+                >
+                
+                <span class="update-recipe-form-input-separator">
+                    :
+                </span>
+
+                <input class="update-recipe-form-input" 
+                    type="number" 
+                    minlength="2" 
+                    maxlength="2"
+                    value="00"
+                    required
+                >
+            </div>
+        </div>
+        <div class="update-recipe-button-container">
+            <button class="update-recipe-button">Añadir Receta</button>
+            <button class="update-recipe-button">Eliminar Receta</button>
+        </div>
+    </section>
+</main>

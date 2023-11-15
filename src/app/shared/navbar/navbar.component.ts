@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { INavbarRoute } from './interfaces/navbar-route.interface';
 
 @Component({
@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   navbarRoutes: INavbarRoute[] = []
 
   constructor(
-    private readonly router: Router
+    private readonly router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -60,15 +60,28 @@ export class NavbarComponent implements OnInit {
     ]
   }
 
+  handleOnClickRoute(navbarRouteHref: string) {
+    this.router.navigateByUrl(navbarRouteHref)
+      .then(() => this.takeRoutes())
+  }
+
   handleNavbarRouteChange(navbarRouteHref: string) {
-    this.inactiveAllNavbarRoutes()
     this.navbarRoutes.forEach(
-      (navbarRoute) => navbarRoute.isActive = navbarRoute.href === navbarRouteHref
+      navbarRoute => this.handleFindHandleNavbarRouteChange(
+        navbarRoute,
+        navbarRouteHref
+      )
     )
   }
 
-  private inactiveAllNavbarRoutes() {
-    this.navbarRoutes.forEach(navbarRoute => navbarRoute.isActive = false)
+  handleFindHandleNavbarRouteChange(navbarRoute: INavbarRoute, navbarRouteHref: string) {
+    navbarRoute.isActive = navbarRoute.href === navbarRouteHref
+
+    navbarRoute.isActive && navbarRoute.href == "/add-recipe"
+      ? navbarRoute.class = "navbar-plus-icon-hidden"
+      : navbarRoute.class = "navbar-plus-icon"
+
+    navbarRoute.href != "/add-recipe" && (delete navbarRoute.class)
   }
 
   takeRoutes() {
