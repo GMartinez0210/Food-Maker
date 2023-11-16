@@ -1,33 +1,29 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute,Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
+
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
-export class WelcomeComponent {
+export class WelcomeComponent implements OnInit {
 
-  user: any = {
-    nombre: "Adhemars"
-  }
-  nombre:''
+  
+  nombreUsuario:String;
+  tiempoPreparacion:number;
   constructor(
-    private readonly userService: UserService, private route:ActivatedRoute
+    private readonly userService: UserService, private route:ActivatedRoute, private router:Router
   ) {
-    this.route.params.subscribe((params)=>{
-      this.nombre=params['nombre'];
-    });
+  
+  }
+  ngOnInit(): void {
+      this.nombreUsuario = localStorage.getItem('nombreUsuario') || '';
   }
 
-  takeUser() {
-    this.userService.user$.subscribe(
-      (user) => this.user = user
-    )
-  }
-
-  getUser() {
-    this.userService.findOne()
+  confirmarTiempo(){
+    this.router.navigate(['/home'],{queryParams: { tiempoPreparacion: this.tiempoPreparacion }});
+    console.log(this.tiempoPreparacion)
   }
 }

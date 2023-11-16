@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,8 @@ export class HttpService {
     return this.httpClient.get<T>(`${this.url}${endpoint}`)
   }
 
-  post<T, U>(endpoint: string, params: U) {
-    return this.httpClient.post<T>(`${this.url}${endpoint}`, params)
+  post<T, U>(endpoint: string, params: U,options?:{headers?:HttpHeaders}) {
+    return this.httpClient.post<T>(`${this.url}${endpoint}`, params,options)
   }
 
   patch<T, U>(endpoint: string, params: U) {

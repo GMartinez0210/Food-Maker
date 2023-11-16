@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { ViewModule } from './view/view.module';
-import { HttpClientModule } from '@angular/common/http';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -19,8 +21,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpClientModule,
     AuthModule,
     ViewModule,
+    
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

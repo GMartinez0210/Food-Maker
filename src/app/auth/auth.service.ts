@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IUser, IUserLogin, IUserRegister } from '../interface/user.interface';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { HttpService } from '../service/http.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,22 +21,27 @@ export class AuthService {
   ) { }
 
   login(body: IUserLogin):Observable<any> {
+    const credentials = btoa(`${body.email}:${body.password}`);
+    const headers = new HttpHeaders({
+      Authorization: `Basic ${credentials}`,
+    });
+    
     return this.httpService
       .post<IUser, object>(
         "/login",
         {
           correo: body.email,
           contrasenia: body.password,
-        }
+          
+        },
+        {headers}
       );
-
-    
   }
 
   handleLogin(response: IUser) {
   
       this.userBehaviorSubject.next(response);
-     
+     this.loginStatusSubject.next(true);
   }
 
   register(body: IUserRegister): Observable<IUser> {
@@ -45,4 +51,6 @@ export class AuthService {
       contrasenia: body.password,
     });
   }
+  
+
 }

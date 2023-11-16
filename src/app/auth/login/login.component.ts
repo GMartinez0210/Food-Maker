@@ -44,7 +44,8 @@ export class LoginComponent {
       (response) => {
        
         alert("Logeo exitoso");
-        this.router.navigate(['/welcome',{nombre:response.nombre}]);
+        localStorage.setItem('nombreUsuario',response.nombre)
+        this.router.navigate(['/welcome']);
       },
       (error) => {
         console.error("Error en el logeo:", error);

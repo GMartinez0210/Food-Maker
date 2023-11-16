@@ -8,7 +8,7 @@ import { LoginModule } from './login/login.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { WelcomeComponent } from '../view/welcome/welcome.component';
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+
 
 const routes: Routes = [
   {
@@ -28,10 +28,7 @@ const routes: Routes = [
     redirectTo: 'login', 
     pathMatch: 'full'
   },
-  {
-    path:'**',
-    component:PageNotFoundComponent,
-  },
+
 ]
 
 @NgModule({
