@@ -14,16 +14,16 @@
         <div class="recipe-card-backgroud-blur"></div>
         <div class="recipe-card-backgroud">
             <div class="recipe-card-subsection">
-                <h1 class="recipe-card-subsection-text"> {{ cardName }} </h1>
+                <h1 class="recipe-card-subsection-text"> {{ receta.nombre }} </h1>
                 <div class="recipe-card-body">
                     <div class="recipe-card-description"> 
                         <img src="/assets/recipe-card/recipe-card-fork-spoon.svg" alt="">
-                        <p> {{ cookingTime }} </p>
+                        <p> {{ receta.tiempopreparacion }} </p>
                     </div>
 
                     <div class="recipe-card-description"> 
                         <img src="/assets/recipe-card/recipe-card-timer.svg" alt="">
-                        <p> {{ cookingTime }} </p>
+                        <p> {{ receta.tiempopreparacion }} min </p>
                     </div>
                 </div>
             </div>
