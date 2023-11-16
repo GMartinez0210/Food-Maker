@@ -45,6 +45,8 @@ export class LoginComponent {
        
         alert("Logeo exitoso");
         localStorage.setItem('nombreUsuario',response.nombre)
+        localStorage.setItem('emailUsuario',response.email)
+        localStorage.setItem('passwordUsuario',response.password)
         this.router.navigate(['/welcome']);
       },
       (error) => {

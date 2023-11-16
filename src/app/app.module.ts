@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { ViewModule } from './view/view.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { RecetasService } from './service/receta.service';
 
 
 
@@ -24,7 +25,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     
   ],
   providers: [
-    
+    RecetasService
   ],
   bootstrap: [AppComponent]
 })

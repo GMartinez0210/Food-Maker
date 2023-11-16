@@ -14,18 +14,19 @@ export class AuthService {
 
   private loginStatusSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public loginStatus$: Observable<boolean> = this.loginStatusSubject.asObservable();
-
+  private userEmail: string = '';
+  private userPassword: string = '';
 
   constructor(
     private readonly httpService: HttpService,
   ) { }
 
   login(body: IUserLogin):Observable<any> {
-    const credentials = btoa(`${body.email}:${body.password}`);
-    const headers = new HttpHeaders({
-      Authorization: `Basic ${credentials}`,
-    });
+
     
+    this.userEmail = body.email;
+    this.userPassword = body.password;
+
     return this.httpService
       .post<IUser, object>(
         "/login",
@@ -34,7 +35,7 @@ export class AuthService {
           contrasenia: body.password,
           
         },
-        {headers}
+      
       );
   }
 
@@ -42,6 +43,10 @@ export class AuthService {
   
       this.userBehaviorSubject.next(response);
      this.loginStatusSubject.next(true);
+  }
+
+  getUserCredentials(): { userEmail: string, userPassword: string } {
+    return { userEmail: this.userEmail, userPassword: this.userPassword };
   }
 
   register(body: IUserRegister): Observable<IUser> {

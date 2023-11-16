@@ -20,16 +20,7 @@ export class HomeComponent implements OnInit {
   ) {  }
   ngOnInit(): void {
     this.nombreUsuario = localStorage.getItem('nombreUsuario') || '';
-    this.route.queryParams.subscribe(params =>{
-      this.tiempoPreparacion = +params['tiempoPreparacion'] || 0;
-      this.recetaService.obtenerRecetasPorTiempo(this.tiempoPreparacion).subscribe((recetas:any[]) =>{
-        this.recetas = recetas;
-        console.log(recetas);
-      },
-      error =>{
-        console.error('Error al obtener las recetas',error)
-      });
-    })
+    
   }
 
 }
