@@ -6,7 +6,7 @@ export interface IUserLogin {
 export interface IUser {
     name: string;
     email: string;
-    password: string;
+    token: string;
 }
 
 export interface IUserRegister {

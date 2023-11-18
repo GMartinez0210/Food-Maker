@@ -11,9 +11,9 @@ import { IUserRegister } from 'src/app/interface/user.interface';
 export class RegisterComponent {
 
   registerForm: FormGroup = new FormGroup({
-    email: new FormControl("", [Validators.email, Validators.required]),
-    name: new FormControl("", [Validators.required]),
-    password: new FormControl("", [Validators.required]),
+    email: new FormControl(null, [Validators.email, Validators.required]),
+    name: new FormControl(null, [Validators.required]),
+    password: new FormControl(null, [Validators.required]),
   });
 
   constructor(

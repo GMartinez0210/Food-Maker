@@ -15,35 +15,48 @@ import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 import { UpdateRecipeModule } from './update-recipe/update-recipe.module';
 import { FavoriteModule } from './favorite/favorite.module';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { authGuard } from 'src/app/auth/auth.guard';
 
 const routes: Routes = [
   {
     path: "",
+    pathMatch: "full",
+    redirectTo: "welcome"
+  },
+  {
+    path: "",
     component: LayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: "home",
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [authGuard],
       },
       {
         path: "category",
-        component: CategoryComponent
+        component: CategoryComponent,
+        canActivate: [authGuard],
       },
       {
         path: "add-recipe",
-        component: AddRecipeComponent
+        component: AddRecipeComponent,
+        canActivate: [authGuard],
       },
       {
         path: "update-recipe",
-        component: UpdateRecipeComponent
+        component: UpdateRecipeComponent,
+        canActivate: [authGuard],
       },
       {
         path: "favorite",
-        component: FavoriteComponent
+        component: FavoriteComponent,
+        canActivate: [authGuard],
       },
       {
         path: "account",
-        component: AccountComponent
+        component: AccountComponent,
+        canActivate: [authGuard],
       }
     ]
   }
