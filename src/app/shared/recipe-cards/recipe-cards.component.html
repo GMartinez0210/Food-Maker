@@ -1,32 +1,6 @@
 <main class="recipe-cards-main-container">
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
-    <app-recipe-card
-    ></app-recipe-card>
+    <ng-container *ngFor="let availableRecipe of availableRecipes">
+        <app-recipe-card [availableRecipe]="availableRecipe"
+        ></app-recipe-card>
+    </ng-container>
 </main>

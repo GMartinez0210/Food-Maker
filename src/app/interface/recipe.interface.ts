@@ -1,19 +1,19 @@
 export interface IRecipeAvailable {
     order: number
     duration: number
-    name: number
-    description: String
+    name: string
+    description: string
     ingredients: any[]
-    image: String
+    image: string
 }
 
 export interface IFetchAvailableRecipesResponse {
     orden: number
     duracion: number
-    nombre: number
-    descripcioncorta: String
+    nombre: string
+    descripcioncorta: string
     ingredientes: any[]
-    imagen: String
+    imagen: string
 }
 
 export interface IParamFetchAvailableRecipes {
