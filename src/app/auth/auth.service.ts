@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
-import { IUser, IUserLogin, IUserRegister } from '../interface/user.interface';
+import { IUser, IUserLogin, IUserRegister, IUserResponse } from '../interface/user.interface';
 import { BehaviorSubject } from 'rxjs';
 import { HttpService } from '../service/http.service';
 import { Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private userBehaviorSubject: BehaviorSubject<IUser> = new BehaviorSubject({} as IUser)
-  $user = this.userBehaviorSubject.asObservable()
-
   constructor(
     private readonly httpService: HttpService,
     private readonly router: Router,
+    private readonly userService: UserService,
   ) { }
 
   login(body: IUserLogin) {
     const loginSubscription = this.httpService
-      .post<IUser, object>(
+      .post<IUserResponse, object>(
         "/login",
         {
           correo: body.username,
@@ -30,14 +29,26 @@ export class AuthService {
     loginSubscription.subscribe(response => this.handleLogin(response))
   }
 
-  handleLogin(response: IUser) {
+  handleLogin(response: IUserResponse) {
     if(!response) {
       alert("No puedes logear")
       return 
     }
 
-    sessionStorage.setItem("jwt", response.token)
-    this.userBehaviorSubject.next(response)
+    const { token, ...restResponseAux } = response
+
+    const restResponse = {
+      name: restResponseAux.nombre,
+      email: restResponseAux.correo,
+    }
+
+    sessionStorage.setItem("jwt", token)
+    sessionStorage.setItem("user", JSON.stringify(restResponse))
+
+    const userAux: IUser = {...restResponse, token}
+
+    this.userService.setUser(userAux)
+    
     this.router.navigate(["/home"])
   }
 
@@ -56,7 +67,7 @@ export class AuthService {
   }
 
   handleRegister(response: IUser) {
-    this.userBehaviorSubject.next(response)
+    this.userService.setUser(response)
     this.router.navigate(["/login"])
   }
 }

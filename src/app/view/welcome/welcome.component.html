@@ -11,11 +11,15 @@
     </section>
 
     <section>
-        <form class="welcome-form-main-container" action="">
+        <form class="welcome-form-main-container"
+            [formGroup]="welcomeForm" 
+            (submit)="handleSubmitWelcomeForm()"
+        >
             <p class="welcome-form-text">¿De cuanto tiempo dispones para cocinar?</p>
 
             <div class="welcome-form-subcontainer">
                 <input class="welcome-form-input" 
+                    formControlName="minutes"
                     type="number" 
                     minlength="2" 
                     maxlength="2"
@@ -28,6 +32,7 @@
                 </span>
                 
                 <input class="welcome-form-input" 
+                    formControlName="seconds"
                     type="number" 
                     minlength="2" 
                     maxlength="2"

@@ -3,6 +3,12 @@ export interface IUserLogin {
     password: string;
 }
 
+export interface IUserResponse {
+    nombre: string;
+    correo: string;
+    token: string;
+}
+
 export interface IUser {
     name: string;
     email: string;

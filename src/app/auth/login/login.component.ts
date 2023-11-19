@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl("", [Validators.email, Validators.required]),
-    password: new FormControl("", [Validators.required]),
+    username: new FormControl(null, [Validators.email, Validators.required]),
+    password: new FormControl(null, [Validators.required]),
   });
 
   user: IUser;
@@ -29,12 +29,6 @@ export class LoginComponent implements OnInit {
     if(!jwt) return
 
     this.router.navigate(["/welcome"])
-  }
-
-  takeUser() {
-    this.authService.$user.subscribe(
-      user => this.user = user
-    )
   }
 
   handleLoginSubmit() {

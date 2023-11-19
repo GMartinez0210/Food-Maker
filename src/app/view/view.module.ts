@@ -4,11 +4,17 @@ import { WelcomeModule } from './welcome/welcome.module';
 import { LayoutModule } from './layout/layout.module';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { userResolver } from '../resolver/user.resolver';
+import { authGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
     path: "welcome",
-    component: WelcomeComponent
+    component: WelcomeComponent,
+    canActivate: [authGuard],
+    resolve: {
+      resolvedData: userResolver
+    },
   }
 ]
 
