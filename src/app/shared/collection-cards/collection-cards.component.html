@@ -1,5 +1,7 @@
-<ng-container *ngFor="let recipe of recipes">
-    <app-collection-card
-        [recipe]="recipe"
-    ></app-collection-card>
-</ng-container>
+<main class="collections-cards-main-container">
+    <ng-container *ngFor="let collection of collections">
+        <app-collection-card
+            [collection]="collection"
+        ></app-collection-card>
+    </ng-container>
+</main>

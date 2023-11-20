@@ -19,6 +19,7 @@ import { authGuard } from 'src/app/auth/auth.guard';
 import { fetchCategoriesResolver } from 'src/app/resolver/category.resolver';
 import { fetchCurrentUserResolver } from 'src/app/resolver/user.resolver';
 import { initHomeAvailableRecipesResolver } from 'src/app/resolver/recipe.resolver';
+import { fetchCollectionsResolver } from 'src/app/resolver/collection.resolver';
 
 const routes: Routes = [
   {
@@ -58,6 +59,7 @@ const routes: Routes = [
         path: "favorite",
         component: FavoriteComponent,
         canActivate: [authGuard],
+        resolve: [fetchCollectionsResolver]
       },
       {
         path: "account",

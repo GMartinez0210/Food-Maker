@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ICollection } from 'src/app/interface/collection.interface';
 
 @Component({
   selector: 'app-collection-card',
@@ -7,5 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class CollectionCardComponent {
   @Input()
-  recipe: any
+  collection: ICollection = {} as ICollection
 }

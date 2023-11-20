@@ -79,7 +79,8 @@ export class NavbarComponent implements OnInit {
 
     navbarRoute.isActive && navbarRoute.href == "/add-recipe"
       ? navbarRoute.class = "navbar-plus-icon-hidden"
-      : navbarRoute.class = "navbar-plus-icon"
+      : navbarRoute.class = "navbar-plus-icon-hidden"
+      //: navbarRoute.class = "navbar-plus-icon"
 
     navbarRoute.href != "/add-recipe" && (delete navbarRoute.class)
   }

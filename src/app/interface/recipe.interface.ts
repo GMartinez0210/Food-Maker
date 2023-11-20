@@ -32,9 +32,7 @@ export interface IAvailableRecipeResponse {
     cantidadCoincidencias: number;
 }
 
-//
-
-export interface IAvailableRecipes {
+export interface IAvailableRecipeBase {
     id:          number;
     name:            string;
     description:       string;
@@ -44,6 +42,9 @@ export interface IAvailableRecipes {
     categoryId:       number;
     image:            string;
     category: ICategory;
+}
+
+export interface IAvailableRecipes extends IAvailableRecipeBase {
     ingredients: IAvailableRecipeIngredient[]
 }
 
