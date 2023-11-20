@@ -2,8 +2,9 @@
     border-radius: 14px;
     border: 2px solid #AFFF48;
 
-    width: 308px;
-    height: 120px;
+    min-width: 288px;
+    width: 100%;
+    aspect-ratio: 308/120;
     flex-shrink: 0;
 
     position: relative;

@@ -49,7 +49,7 @@ export class AuthService {
 
     this.userService.setUser(userAux)
     
-    this.router.navigate(["/home"])
+    this.router.navigate(["/welcome"])
   }
 
   register(body: IUserRegister) {

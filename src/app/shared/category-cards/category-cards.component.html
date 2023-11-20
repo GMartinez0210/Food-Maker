@@ -1,5 +1,7 @@
 <section class="category-cards-section-container">
-    <app-category-card></app-category-card>
-    <app-category-card></app-category-card>
-    <app-category-card></app-category-card>
+    <ng-container *ngFor="let category of categories">
+        <app-category-card
+            [category]="category"
+        ></app-category-card>
+    </ng-container>
 </section>

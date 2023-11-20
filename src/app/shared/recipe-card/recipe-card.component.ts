@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IRecipeAvailable } from 'src/app/interface/recipe.interface';
+import { IAvailableRecipes } from 'src/app/interface/recipe.interface';
 
 @Component({
   selector: 'app-recipe-card',
@@ -8,20 +8,20 @@ import { IRecipeAvailable } from 'src/app/interface/recipe.interface';
 })
 export class RecipeCardComponent implements OnInit {
   @Input()
-  availableRecipe: IRecipeAvailable
+  showAvailableRecipe: IAvailableRecipes
 
-  cardImage: string
-  cardName: string
+  image: string
+  name: string
   cookingTime: string
   ingredients: number
 
   ngOnInit(): void {
-    this.cardImage = this.availableRecipe.image 
-      ? `data:image/png;base64,${this.availableRecipe.image}`
+    this.image = this.showAvailableRecipe.image 
+      ? `data:image/png;base64,${this.showAvailableRecipe.image}`
       : "/assets/recipe-card/recipe-card-loader.gif"
     
-    this.cardName = this.availableRecipe.name
-    this.cookingTime = `${this.availableRecipe.duration}min`
-    this.ingredients = this.availableRecipe.ingredients.length
+    this.name = this.showAvailableRecipe.name
+    this.cookingTime = `${this.showAvailableRecipe.cookingTime}min`
+    this.ingredients = this.showAvailableRecipe.ingredients.length
   }
 }

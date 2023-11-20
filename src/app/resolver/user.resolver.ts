@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from '@angular
 import { UserService } from '../service/user.service';
 import { IUser } from '../interface/user.interface';
 
-export const userResolver: ResolveFn<IUser> = (
+export const fetchCurrentUserResolver: ResolveFn<void> = (
   route: ActivatedRouteSnapshot, 
   state: RouterStateSnapshot
 ) => {

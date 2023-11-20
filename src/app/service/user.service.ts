@@ -22,12 +22,13 @@ export class UserService {
     this.userBehaviorSubject.next(user)
   }
 
-  fetchCurrentUser(): IUser {
+  fetchCurrentUser() {
     const userString = sessionStorage.getItem("user")
+
+    if(!userString) return
+
     const user = JSON.parse(userString)
     
     this.userBehaviorSubject.next(user)
-
-    return user
   }
 }

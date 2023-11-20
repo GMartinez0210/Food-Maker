@@ -1,7 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { IParamFetchAvailableRecipes, IRecipeAvailable } from 'src/app/interface/recipe.interface';
+import { IParamFetchAvailableRecipes } from 'src/app/interface/recipe.interface';
 import { IUser } from 'src/app/interface/user.interface';
 import { RecipeService } from 'src/app/service/recipe.service';
 import { UserService } from 'src/app/service/user.service';
@@ -25,7 +24,6 @@ export class WelcomeComponent implements OnInit {
   });
 
   constructor(
-    private readonly router: Router,
     private readonly userService: UserService,
     private readonly recipeService: RecipeService,
   ) {}
@@ -56,6 +54,5 @@ export class WelcomeComponent implements OnInit {
     const params: IParamFetchAvailableRecipes = { cookingTime }
 
     this.recipeService.fetchAvailableRecipes(params)
-    this.router.navigate(["/home"])
   }
 }
