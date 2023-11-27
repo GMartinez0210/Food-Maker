@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthModule } from './auth/auth.module';
 import { ViewModule } from './view/view.module';
-import { authGuard } from './auth/auth.guard';
 
 const routes: Routes = [];
 

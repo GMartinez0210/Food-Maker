@@ -25,4 +25,8 @@ export interface ICollectionResponse {
     }[];
 }
 
+export interface ICollectionGetCollectionById {
+    id: number;
+}
+
 

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
-import * as jsonwebtoken from "jsonwebtoken"
 
-import { HttpService } from './http.service';
 import { IUser } from '../interface/user.interface';
 
 @Injectable({

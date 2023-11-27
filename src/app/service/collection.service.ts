@@ -1,20 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { BehaviorSubject } from 'rxjs';
-import { ICollection, ICollectionResponse } from '../interface/collection.interface';
+import { ICollection, ICollectionGetCollectionById, ICollectionResponse } from '../interface/collection.interface';
 import { IAvailableRecipeBase } from '../interface/recipe.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CollectionService {
 
+  private showCollectionsBehaviorSubject: BehaviorSubject<ICollection[]> = new BehaviorSubject([])
+  $showCollections = this.showCollectionsBehaviorSubject.asObservable()
+
   private collectionsBehaviorSubject: BehaviorSubject<ICollection[]> = new BehaviorSubject([])
   $collections = this.collectionsBehaviorSubject.asObservable()
 
   constructor(
     private readonly httpService: HttpService,
+    private readonly router: Router
   ) { }
+
+  getShowCollections() {
+    return this.showCollectionsBehaviorSubject.value
+  }
+
+  setShowCollections(showCollections: ICollection[]) {
+    this.showCollectionsBehaviorSubject.next(showCollections)
+  }
 
   getCollections() {
     return this.collectionsBehaviorSubject.value
@@ -27,7 +40,10 @@ export class CollectionService {
   fetchCollections() {
     const collections = this.getCollections()
 
-    if(collections.length) return
+    if(collections.length) {
+      this.setShowCollections(collections)
+      return
+    }
 
     const endpoint = "/getcoleccion"
     
@@ -65,6 +81,22 @@ export class CollectionService {
       }
     )
 
+    this.showCollectionsBehaviorSubject.next(responseAux)
     this.collectionsBehaviorSubject.next(responseAux)
+  }
+
+  getCollectionById(params: ICollectionGetCollectionById) {
+    const { id } = params
+
+    const collections = this.getCollections()
+
+    const collection = collections?.find((collection) => collection.id == id)
+
+    if(!collection) {
+      this.router.navigate(["/favorite"])
+      return null
+    }
+
+    return collection
   }
 }

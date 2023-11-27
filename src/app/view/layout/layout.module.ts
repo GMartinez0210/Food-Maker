@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+
 import { LayoutComponent } from './layout.component';
 import { HomeModule } from './home/home.module';
-import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CategoryComponent } from './category/category.component';
@@ -20,6 +21,7 @@ import { fetchCategoriesResolver } from 'src/app/resolver/category.resolver';
 import { fetchCurrentUserResolver } from 'src/app/resolver/user.resolver';
 import { initHomeAvailableRecipesResolver } from 'src/app/resolver/recipe.resolver';
 import { fetchCollectionsResolver } from 'src/app/resolver/collection.resolver';
+import { FavoriteDetailComponent } from './favorite/favorite-detail/favorite-detail.component';
 
 const routes: Routes = [
   {
@@ -57,9 +59,22 @@ const routes: Routes = [
       },
       {
         path: "favorite",
-        component: FavoriteComponent,
         canActivate: [authGuard],
-        resolve: [fetchCollectionsResolver]
+        resolve: [fetchCollectionsResolver],
+        children: [
+          {
+            path: "",
+            component: FavoriteComponent,
+            canActivate: [authGuard],
+            resolve: [fetchCollectionsResolver],
+          },
+          {
+            path: "**",
+            component: FavoriteDetailComponent,
+            canActivate: [authGuard],
+            resolve: [fetchCollectionsResolver],
+          }
+        ]
       },
       {
         path: "account",

@@ -1,7 +1,10 @@
 import { inject } from '@angular/core';
-import { ResolveFn } from '@angular/router';
+import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from '@angular/router';
 import { CollectionService } from '../service/collection.service';
 
-export const fetchCollectionsResolver: ResolveFn<void> = (route, state) => {
+export const fetchCollectionsResolver: ResolveFn<void> = (
+  route: ActivatedRouteSnapshot, 
+  state: RouterStateSnapshot
+) => {
   return inject(CollectionService).fetchCollections();
 };

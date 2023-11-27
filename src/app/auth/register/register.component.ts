@@ -28,7 +28,6 @@ export class RegisterComponent {
       return
     }
 
-
     const body: IUserRegister = this.registerForm.value
 
     this.authService.register(body)

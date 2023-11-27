@@ -66,7 +66,7 @@ export class AuthService {
     registerSubscription.subscribe(response => this.handleRegister(response))
   }
 
-  handleRegister(response: IUser) {
+  private handleRegister(response: IUser) {
     this.userService.setUser(response)
     this.router.navigate(["/login"])
   }

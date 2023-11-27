@@ -9,6 +9,7 @@ export const authGuard: CanActivateFn = (
   
   if(!user) {
     sessionStorage.removeItem("jwt")
+
     const router = new Router()
     return router.navigate(["/login"])
   }

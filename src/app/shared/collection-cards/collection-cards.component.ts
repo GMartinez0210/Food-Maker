@@ -8,7 +8,7 @@ import { CollectionService } from 'src/app/service/collection.service';
   styleUrls: ['./collection-cards.component.css']
 })
 export class CollectionCardsComponent implements OnInit {
-  collections: ICollection[] = []
+  showCollections: ICollection[] = []
 
   constructor(
     private readonly collectionService: CollectionService,
@@ -19,8 +19,8 @@ export class CollectionCardsComponent implements OnInit {
   }
 
   takeCollections() {
-    this.collectionService.$collections.subscribe(
-      (collections) => this.collections = collections
+    this.collectionService.$showCollections.subscribe(
+      (showCollections) => this.showCollections = showCollections
     )
   }
 }
