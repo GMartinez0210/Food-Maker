@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
-import { IFetchAvailableRecipesBody, IParamFetchAvailableRecipes, IAvailableRecipes, IParamFetchAvailableRecipesByCategory, IAvailableRecipeResponse, IAvailableRecipeIngredient } from '../interface/recipe.interface';
+import { IFetchAvailableRecipesBody, IParamFetchAvailableRecipes, IAvailableRecipes, IParamFetchAvailableRecipesByCategory, IAvailableRecipeResponse, IAvailableRecipeIngredient, IParamFetchAddRecipeBody, IAvailableRecipeResponseBase, IAvailableRecipeReceta } from '../interface/recipe.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -146,5 +146,40 @@ export class RecipeService {
     )
 
     return responseAux
+  }
+
+  fetchAddRecipe(params: IParamFetchAddRecipeBody) {
+    const { recipes } = params
+
+    const ingredientes = recipes.ingredients.map(
+      (ingredient) => ({
+        nombre: ingredient.name,
+        descripcion: ingredient.description,
+        cantidad: ingredient.quantity,
+      })
+    )
+
+    const receta: IAvailableRecipeReceta = {
+      idreceta: recipes.id,
+      nombre: recipes.name,
+      descripcion: recipes.description,
+      descripcioncorta: recipes.shortDescription,
+      instrucciones: recipes.instruction,
+      tiempopreparacion: recipes.cookingTime,
+      idcategoria: 1,
+      objCategoria: {
+        idcategoria: 1,
+        nombre: "Mis recetas"
+      },
+      imagen: ""
+    } as IAvailableRecipeReceta
+
+    const body: IAvailableRecipeResponseBase = {
+      receta,
+      ingredientes,
+    }
+
+    this.httpService.post<IAvailableRecipeReceta, IAvailableRecipeResponseBase>("/anadirReceta", body)
+      .subscribe()
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { environment } from 'src/environment';
 
 @Injectable({
@@ -13,19 +13,44 @@ export class HttpService {
     private readonly httpClient: HttpClient
   ) { }
 
+  private getToken() {
+    const jwt = sessionStorage.getItem("jwt")
+    return jwt
+  }
+
   get<T>(endpoint: string) {
-    return this.httpClient.get<T>(`${this.url}${endpoint}`)
+    const jwt = this.getToken()
+
+    const headers = new HttpHeaders()
+      .set("Authorization", `Bearer ${jwt}`)
+
+    return this.httpClient.get<T>(`${this.url}${endpoint}`, { headers })
   }
 
   post<T, U>(endpoint: string, params: U) {
-    return this.httpClient.post<T>(`${this.url}${endpoint}`, params)
+    const jwt = this.getToken()
+
+    const headers = new HttpHeaders()
+      .set("Authorization", `Bearer ${jwt}`)
+  
+    return this.httpClient.post<T>(`${this.url}${endpoint}`, params, { headers })
   }
 
   patch<T, U>(endpoint: string, params: U) {
-    return this.httpClient.patch<T>(`${this.url}${endpoint}`, params)
+    const jwt = this.getToken()
+
+    const headers = new HttpHeaders()
+      .set("Authorization", `Bearer ${jwt}`)
+
+    return this.httpClient.patch<T>(`${this.url}${endpoint}`, params, { headers })
   }
 
   delete<T>(endpoint: string) {
-    return this.httpClient.delete<T>(`${this.url}${endpoint}`)
+    const jwt = this.getToken()
+
+    const headers = new HttpHeaders()
+      .set("Authorization", `Bearer ${jwt}`)
+    
+    return this.httpClient.delete<T>(`${this.url}${endpoint}`, { headers })
   }
 }

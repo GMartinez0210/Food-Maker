@@ -1,34 +1,38 @@
 import { ICategory } from "./category.interface"
 
 export interface IAvailableRecipeIngredient {
-    id:            number;
+    id?:            number;
     name:          string;
     description:   string;
     quantity:      number;
 }
 
-
-export interface IAvailableRecipeResponse {
-    receta: {
-        idreceta:          number;
-        nombre:            string;
-        descripcion:       string;
-        descripcioncorta:  string;
-        instrucciones:     string;
-        tiempopreparacion: number;
-        idcategoria:       number;
-        imagen:            null;
-        objCategoria: {
-            idcategoria: number;
-            nombre:      string;
-        };
+export interface IAvailableRecipeReceta {
+    idreceta:          number;
+    nombre:            string;
+    descripcion:       string;
+    descripcioncorta:  string;
+    instrucciones:     string;
+    tiempopreparacion: number;
+    idcategoria:       number;
+    imagen:            null;
+    objCategoria: {
+        idcategoria: number;
+        nombre:      string;
     };
+}
+
+export interface IAvailableRecipeResponseBase {
+    receta: IAvailableRecipeReceta;
     ingredientes: {
-        idingrediente: number;
+        idingrediente?: number;
         nombre:        string;
         descripcion:   string;
         cantidad:      number;
     }[];
+}
+
+export interface IAvailableRecipeResponse extends IAvailableRecipeResponseBase {
     cantidadCoincidencias: number;
 }
 
@@ -60,3 +64,6 @@ export interface IParamFetchAvailableRecipesByCategory {
     categoryId: number
 }
 
+export interface IParamFetchAddRecipeBody {
+    recipes: IAvailableRecipes
+}

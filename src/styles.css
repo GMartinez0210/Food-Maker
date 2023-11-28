@@ -10,3 +10,5 @@ html, body {
     background: #000;
     color: #FFF;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -22,6 +22,8 @@ import { fetchCurrentUserResolver } from 'src/app/resolver/user.resolver';
 import { initHomeAvailableRecipesResolver } from 'src/app/resolver/recipe.resolver';
 import { fetchCollectionsResolver } from 'src/app/resolver/collection.resolver';
 import { FavoriteDetailComponent } from './favorite/favorite-detail/favorite-detail.component';
+import { RecipeComponent } from './recipe/recipe.component';
+import { RecipeModule } from './recipe/recipe.module';
 
 const routes: Routes = [
   {
@@ -48,14 +50,20 @@ const routes: Routes = [
         resolve: [fetchCategoriesResolver]
       },
       {
-        path: "add-recipe",
-        component: AddRecipeComponent,
+        path: "recipe",
         canActivate: [authGuard],
-      },
-      {
-        path: "update-recipe",
-        component: UpdateRecipeComponent,
-        canActivate: [authGuard],
+        children: [
+          {
+            path: "",
+            component: RecipeComponent,
+            canActivate: [authGuard],
+          },
+          {
+            path: "**",
+            component: RecipeComponent,
+            canActivate: [authGuard],
+          },
+        ]
       },
       {
         path: "favorite",
@@ -93,6 +101,7 @@ const routes: Routes = [
     HomeModule,
     CategoryModule,
     AccountModule,
+    RecipeModule,
     AddRecipeModule,
     UpdateRecipeModule,
     FavoriteModule,
