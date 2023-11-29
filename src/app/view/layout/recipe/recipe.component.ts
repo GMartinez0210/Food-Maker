@@ -46,15 +46,23 @@ export class RecipeComponent implements OnInit {
     )
     
     const formRecipeData = this.formRecipe.value
+
+    const cookingTime = formRecipeData?.cookingTimeHours * 60 
+      + formRecipeData?.cookingTimeMinutes
+      + formRecipeData?.cookingTimeSeconds / 60 
+
     const body: IAvailableRecipes = {
+      cookingTime,
       name: formRecipeData?.title,
-      description: formRecipeData?.title,
+      description: formRecipeData?.description,
       shortDescription: formRecipeData?.title,
-      instruction: formRecipeData?.title,
-      cookingTime: formRecipeData?.title,
-      categoryId: formRecipeData?.title,
-      image: formRecipeData?.title,
-      category: formRecipeData?.title,
+      instruction: formRecipeData?.instructions,
+      categoryId: 1,
+      image: "",
+      category: {
+        id: 1,
+        name: "Mis recetas"
+      },
       ingredients: ingredientsAux,
     } as IAvailableRecipes
 

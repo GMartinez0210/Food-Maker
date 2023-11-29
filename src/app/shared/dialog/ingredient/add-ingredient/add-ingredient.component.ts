@@ -22,10 +22,6 @@ export class AddIngredientComponent implements OnInit {
 
   handleClose() {
     this.data = this.ingredient
-    
-    console.log("this.data: ", this.data)
-    console.log("this.ingredient: ", this.ingredient)
-
     this.dialogRef.close()
   }
 }
