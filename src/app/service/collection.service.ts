@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { BehaviorSubject } from 'rxjs';
-import { ICollection, ICollectionGetCollectionById, ICollectionResponse } from '../interface/collection.interface';
+import { ICollection, ICollectionGetCollectionById, ICollectionResponse, IParamsCollectionFetchDeleteOne } from '../interface/collection.interface';
 import { IAvailableRecipeBase } from '../interface/recipe.interface';
 import { Router } from '@angular/router';
 
@@ -35,6 +35,13 @@ export class CollectionService {
 
   setCollections(collections: ICollection[]) {
     this.collectionsBehaviorSubject.next(collections)
+  }
+
+  removeCollection(collectionId: number) {
+    const collections = this.getCollections()
+    const newCollections = collections.filter(collection => collection.id != collectionId)
+
+    this.setCollections(newCollections)
   }
 
   fetchCollections() {
@@ -98,5 +105,12 @@ export class CollectionService {
     }
 
     return collection
+  }
+
+  fetchDeleteOne(params: IParamsCollectionFetchDeleteOne) {
+    const endpoint = `/coleccion/eliminar/${params?.id}`
+
+    const collectionObservable = this.httpService.delete(endpoint)
+    collectionObservable.subscribe(() => this.removeCollection(params?.id))
   }
 }

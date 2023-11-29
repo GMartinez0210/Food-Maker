@@ -29,4 +29,7 @@ export interface ICollectionGetCollectionById {
     id: number;
 }
 
+export interface IParamsCollectionFetchDeleteOne {
+    id: number
+}
 

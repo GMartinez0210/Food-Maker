@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ICollection } from 'src/app/interface/collection.interface';
+import { ICollection, IParamsCollectionFetchDeleteOne } from 'src/app/interface/collection.interface';
+import { CollectionService } from 'src/app/service/collection.service';
 
 @Component({
   selector: 'app-collection-card',
@@ -12,7 +13,8 @@ export class CollectionCardComponent {
   collection: ICollection = {} as ICollection
 
   constructor(
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly collectionService: CollectionService,
   ) { }
 
   handleClickCollection() {
@@ -21,5 +23,15 @@ export class CollectionCardComponent {
     if(!recipes.length) return
 
     this.router.navigate(["/favorite", this.collection.id])
+  }
+
+  handleDelete() {
+    const collection = this.collection
+
+    const { id } = collection
+
+    const params: IParamsCollectionFetchDeleteOne = { id }
+
+    this.collectionService.fetchDeleteOne(params)
   }
 }
