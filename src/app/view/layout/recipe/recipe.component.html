@@ -28,10 +28,10 @@
             <div class="recipe-body-subcontianer">
                 <h2 class="recipe-body-title">Ingredientes:</h2>
                 <div class="recipe-body-button-container">
-                    <button (click)="handleAddIngredient()" class="recipe-body-button">
+                    <div (click)="handleAddIngredient()" class="recipe-body-button">
                         Añadir ingrediente
                         <img src="/assets/recipe/recipe-plus.svg" alt="+">
-                    </button>
+                    </div>
                 </div>
                 <div class="recipe-ingredients-description">
                     <p *ngFor="let ingredient of ingredients">
