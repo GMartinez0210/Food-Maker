@@ -8,3 +8,19 @@ export const initHomeAvailableRecipesResolver: ResolveFn<void> = (
 ) => {
   return inject(RecipeService).initHomeAvailableRecipes();
 };
+
+export const fetchOneAvailableRecipeResolver: ResolveFn<void> = (
+  route: ActivatedRouteSnapshot, 
+  state: RouterStateSnapshot
+) => {
+  const { url: [ { path: recipeId } ] } = route
+
+  return inject(RecipeService).fetchOneRecipe(+recipeId);
+};
+
+export const resetOneRecipeResolver: ResolveFn<void> = (
+  route: ActivatedRouteSnapshot, 
+  state: RouterStateSnapshot
+) => {
+  return inject(RecipeService).resetOneRecipe();
+};

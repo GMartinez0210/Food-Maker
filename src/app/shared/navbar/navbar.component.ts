@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
         name: "Category"
       },
       {
-        href: "/recipe",
+        href: "/recipe/new",
         icon: "/assets/navbar/navbar-plus-icon.svg",
         iconActive: "/assets/navbar/navbar-plus-icon-active.svg",
         isActive: false,
@@ -77,11 +77,11 @@ export class NavbarComponent implements OnInit {
   handleFindHandleNavbarRouteChange(navbarRoute: INavbarRoute, navbarRouteHref: string) {
     navbarRoute.isActive = navbarRoute.href === navbarRouteHref
 
-    navbarRoute.isActive && navbarRoute.href == "/recipe"
+    navbarRoute.isActive && navbarRoute.href == "/recipe/new"
       ? navbarRoute.class = "navbar-plus-icon-hidden"
       : navbarRoute.class = "navbar-plus-icon"
 
-    navbarRoute.href != "/recipe" && (delete navbarRoute.class)
+    navbarRoute.href != "/recipe/new" && (delete navbarRoute.class)
   }
 
   takeRoutes() {

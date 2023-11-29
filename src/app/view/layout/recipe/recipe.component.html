@@ -6,11 +6,14 @@
             <div class="recipe-header-form">
                 <input type="text"
                     formControlName="title"
+                    [value]="formRecipeData['title']"
                     class="recipe-input-title"
                     placeholder="Titulo de la receta"
                 >
+
                 <textarea
                     formControlName="description"
+                    [value]="formRecipeData['description']"
                     cols="10" 
                     rows="5"
                     class="recipe-input-description" 
@@ -23,6 +26,7 @@
                 <h2 class="recipe-body-title">Instrucciones:</h2>
                 <textarea class="recipe-instructions-description"
                     formControlName="instructions"
+                    [value]="formRecipeData['instructions']"
                 ></textarea>
             </div>
             <div class="recipe-body-subcontianer">
@@ -46,10 +50,10 @@
                 <div class="recipe-form-subcontainer">
                     <input class="recipe-form-input"
                         formControlName="cookingTimeHours"
+                        [value]="formRecipeData['cookingTimeHours']"
                         type="number" 
                         minlength="2" 
                         maxlength="2"
-                        value="00"
                         required
                     >
                     
@@ -59,10 +63,10 @@
                     
                     <input class="recipe-form-input"
                         formControlName="cookingTimeMinutes"
+                        [value]="formRecipeData['cookingTimeMinutes']"
                         type="number" 
                         minlength="2" 
                         maxlength="2"
-                        value="00"
                         required
                     >
                     
@@ -72,17 +76,17 @@
 
                     <input class="recipe-form-input"
                         formControlName="cookingTimeSeconds"
+                        [value]="formRecipeData['cookingTimeSeconds']"
                         type="number" 
                         minlength="2" 
                         maxlength="2"
-                        value="00"
                         required
                     >
                 </div>
             </div>
             <div>
                 <button class="recipe-button">
-                    Añadir Receta
+                    {{ (!availableRecipe.id) ? "Añadir Receta" : "Actualizar Receta" }}
                 </button>
             </div>
         </section>

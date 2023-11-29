@@ -24,13 +24,41 @@ export class RecipeComponent implements OnInit {
 
   ingredients: IAddIngredientData[] = []
 
+  availableRecipe: IAvailableRecipes = {} as IAvailableRecipes
+
   constructor(
     private readonly matDialog: MatDialog,
     private readonly recipeService: RecipeService,
   ) { }
 
   ngOnInit(): void {
-    
+    this.formRecipe.reset()
+    this.takeRecipe()
+  }
+
+  takeRecipe() {
+    this.recipeService.$availableRecipe.subscribe(
+      (availableRecipe) => this.handleTakeRecipe(availableRecipe)
+    )
+  }
+
+  handleTakeRecipe(availableRecipe: IAvailableRecipes) {    
+    const isEmpty = Object.values(availableRecipe)
+
+    if(!isEmpty.length) return
+
+    const cookingTimeHours = Math.floor((availableRecipe?.cookingTime ?? 0) / 60)
+    const cookingTimeMinute = ((availableRecipe?.cookingTime ?? 0) - (cookingTimeHours * 60)) / 60
+    const cookingTimeSeconds = (availableRecipe?.cookingTime ?? 0) % 60
+
+    this.formRecipe.controls["title"].setValue(availableRecipe?.name)
+    this.formRecipe.controls["description"].setValue(availableRecipe?.description)
+    this.formRecipe.controls["instructions"].setValue(availableRecipe?.instruction)
+    this.formRecipe.controls["cookingTimeHours"].setValue(+cookingTimeHours)
+    this.formRecipe.controls["cookingTimeMinutes"].setValue(+cookingTimeMinute)
+    this.formRecipe.controls["cookingTimeSeconds"].setValue(+cookingTimeSeconds)
+
+    this.ingredients = availableRecipe?.ingredients ?? []
   }
 
   handleSubmit() {
@@ -80,5 +108,9 @@ export class RecipeComponent implements OnInit {
     addIngredientDialog.afterClosed().subscribe(
       (ingredient) => this.ingredients.push(ingredient)
     )
+  }
+
+  get formRecipeData() {
+    return this.formRecipe.controls
   }
 }

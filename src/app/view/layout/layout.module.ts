@@ -9,17 +9,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CategoryComponent } from './category/category.component';
 import { CategoryModule } from './category/category.module';
 import { AccountComponent } from './account/account.component';
-import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { AccountModule } from './account/account.module';
-import { AddRecipeModule } from './add-recipe/add-recipe.module';
-import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
-import { UpdateRecipeModule } from './update-recipe/update-recipe.module';
 import { FavoriteModule } from './favorite/favorite.module';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { authGuard } from 'src/app/auth/auth.guard';
 import { fetchCategoriesResolver } from 'src/app/resolver/category.resolver';
 import { fetchCurrentUserResolver } from 'src/app/resolver/user.resolver';
-import { initHomeAvailableRecipesResolver } from 'src/app/resolver/recipe.resolver';
+import { fetchOneAvailableRecipeResolver, initHomeAvailableRecipesResolver, resetOneRecipeResolver } from 'src/app/resolver/recipe.resolver';
 import { fetchCollectionsResolver } from 'src/app/resolver/collection.resolver';
 import { FavoriteDetailComponent } from './favorite/favorite-detail/favorite-detail.component';
 import { RecipeComponent } from './recipe/recipe.component';
@@ -55,14 +51,16 @@ const routes: Routes = [
         canActivate: [authGuard],
         children: [
           {
-            path: "",
+            path: "new",
             component: RecipeComponent,
             canActivate: [authGuard],
+            resolve: [resetOneRecipeResolver]
           },
           {
             path: "**",
             component: RecipeComponent,
             canActivate: [authGuard],
+            resolve: [fetchOneAvailableRecipeResolver]
           },
         ]
       },
@@ -109,8 +107,6 @@ const routes: Routes = [
     CategoryModule,
     AccountModule,
     RecipeModule,
-    AddRecipeModule,
-    UpdateRecipeModule,
     FavoriteModule,
     SharedModule
   ]

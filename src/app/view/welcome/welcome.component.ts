@@ -49,7 +49,7 @@ export class WelcomeComponent implements OnInit {
     const minutes = this.welcomeForm.value?.minutes || 0
     const seconds = this.welcomeForm.value?.seconds || 0
 
-    const cookingTime = (minutes * 60) + seconds
+    const cookingTime = minutes + (seconds * 60)
 
     const params: IParamFetchAvailableRecipes = { cookingTime }
 

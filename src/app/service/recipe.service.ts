@@ -19,6 +19,9 @@ export class RecipeService {
   
   private availableRecipesByCategoryBehaviorSubject: BehaviorSubject<IAvailableRecipes[]> = new BehaviorSubject([])
   $availableRecipesByCategory = this.availableRecipesByCategoryBehaviorSubject.asObservable()
+  
+  private availableRecipeBehaviorSubject: BehaviorSubject<IAvailableRecipes> = new BehaviorSubject({} as IAvailableRecipes)
+  $availableRecipe = this.availableRecipeBehaviorSubject.asObservable()
 
   constructor(
     private readonly router: Router,
@@ -181,5 +184,59 @@ export class RecipeService {
 
     this.httpService.post<IAvailableRecipeReceta, IAvailableRecipeResponseBase>("/anadirReceta", body)
       .subscribe()
+  }
+
+  fetchOneRecipe(recipeId: number) {
+    const endpoint = `/buscarReceta/${recipeId}`
+    this.httpService.get<IAvailableRecipeResponseBase>(endpoint).subscribe(
+      (response) => this.handleFetchOneRecipe(response)
+    )
+  }
+
+  private handleFetchOneRecipe(response: IAvailableRecipeResponseBase) {
+    
+    const ingredients: IAvailableRecipeIngredient[] = response.ingredientes.map(
+      ingredient => ({
+        id: ingredient.idingrediente,
+        name: ingredient.nombre,
+        description: ingredient.descripcion,
+        quantity: ingredient.cantidad,
+      })
+    )
+
+    const category = {
+      id: response.receta.objCategoria.idcategoria,
+      name: response.receta.objCategoria.nombre,
+    }
+
+    const {
+      nombre: name,
+      imagen: image,
+      idcategoria: id,
+      idcategoria: categoryId,
+      descripcion: description,
+      instrucciones: instruction,
+      tiempopreparacion: cookingTime,
+      descripcioncorta: shortDescription,
+    } = response.receta
+
+    const result = {
+      id,
+      name,
+      image,
+      category,
+      categoryId,
+      ingredients,
+      instruction,
+      description,
+      cookingTime,
+      shortDescription,
+    }
+
+    this.availableRecipeBehaviorSubject.next(result)
+  }
+
+  resetOneRecipe() {
+    this.availableRecipeBehaviorSubject.next({} as IAvailableRecipes)
   }
 }
