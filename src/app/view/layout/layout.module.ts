@@ -24,6 +24,7 @@ import { fetchCollectionsResolver } from 'src/app/resolver/collection.resolver';
 import { FavoriteDetailComponent } from './favorite/favorite-detail/favorite-detail.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeModule } from './recipe/recipe.module';
+import { AddFavoriteComponent } from './favorite/add-favorite/add-favorite.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,12 @@ const routes: Routes = [
           {
             path: "",
             component: FavoriteComponent,
+            canActivate: [authGuard],
+            resolve: [fetchCollectionsResolver],
+          },
+          {
+            path: "new",
+            component: AddFavoriteComponent,
             canActivate: [authGuard],
             resolve: [fetchCollectionsResolver],
           },
