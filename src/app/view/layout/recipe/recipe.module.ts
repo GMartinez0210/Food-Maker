@@ -7,15 +7,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [
-    RecipeComponent
-  ],
+  declarations: [ RecipeComponent ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
     SharedModule,
-  ]
+  ],
+  exports: [ RecipeComponent ],
 })
 export class RecipeModule { }

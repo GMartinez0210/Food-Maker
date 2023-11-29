@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
+  exports: [AddFavoriteComponent],
 })
 export class AddFavoriteModule { }

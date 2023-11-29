@@ -109,6 +109,8 @@ const routes: Routes = [
     RecipeModule,
     FavoriteModule,
     SharedModule
-  ]
+  ],
+  exports: [LayoutComponent],
+
 })
 export class LayoutModule { }

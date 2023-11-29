@@ -3,9 +3,9 @@
         <h1>Mis colecciones</h1>
     </header>
     <section>
-        <a href="/favorite/new" class="favorite-new-button">
+        <button (click)="handleRedirect()" class="favorite-new-button">
             Agregar una colección
-        </a>
+        </button>
     </section>
     <section>
         <app-collection-cards></app-collection-cards>
